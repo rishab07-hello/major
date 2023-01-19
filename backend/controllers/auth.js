@@ -1,9 +1,10 @@
 const User = require('../models/User');
-const company = require('../models/company');
+const Company = require('../models/Company');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const error = require('../utils/error');
 const Notice = require('../models/Notice');
+// sign up the current student.
 exports.signup = async (req, res) => {
     const emailCheck = await User.find({'email': req.body.email});
 
@@ -43,7 +44,7 @@ exports.signup = async (req, res) => {
         response: _.omit(user.toObject(), ['password'])
     });
 }
-
+// sign in the current user
 exports.signin = async (req, res) => {  
     let user = await User.findOne({email : req.body.email});
     if(!user) return res.status(404).json(error(["invalid username or password"]));
@@ -61,7 +62,7 @@ exports.signin = async (req, res) => {
         response: _.omit(user.toObject(), ['password'])
     });
 }
-
+// signout the current student
 exports.signout = (req, res) => {
     res.clearCookie('token');
     res.json({
@@ -69,9 +70,10 @@ exports.signout = (req, res) => {
         response: {}
     })
 }
-exports.changeResume = (req,res) =>{
+// change the resume of current login student
+exports.changeResume = async(req,res) =>{
     let q=req.body.resume;
-    User.updateOne({ _id: req.body.id},{$set: {resume: req.body.resume}},(err,doc)=>{
+    await User.updateOne({ _id: req.body.id},{$set: {resume: req.body.resume}},(err,doc)=>{
          if(err)console.log("error");
     })
     res.json({
@@ -79,6 +81,7 @@ exports.changeResume = (req,res) =>{
         response: {q}
     })
 }
+// return all student details from the database
 exports.allStudentDetails= (req,res) =>{
     User.find({}, function(err, result) {
        if(err)
@@ -91,10 +94,10 @@ exports.allStudentDetails= (req,res) =>{
     })
     }
    })
-   
 }
+// return all company avaliable for drive
 exports.allCompanyDetails= (req,res) =>{
-    company.find({}, function(err, result) {
+    Company.find({}, function(err, result) {
        if(err)
        console.log("error in geting details of company in fetch");
        else{
@@ -106,6 +109,7 @@ exports.allCompanyDetails= (req,res) =>{
     }
    })
 }
+// return all notice posted by the TPO
 exports.allNoticeDetails= (req,res) =>{
     Notice.find({}, function(err, result) {
        if(err)
@@ -119,8 +123,94 @@ exports.allNoticeDetails= (req,res) =>{
     }
    })
 }
-exports.createdatabase= (req,res) =>{
-    const name_of_database=req.body.company_name;
-  
+// Upload the drive details in database
+exports.createdrivepost= async(req,res) =>{
+    let newcompany= new Company({
+        Company_Name: req.body.Company_Name,
+        Role: req.body.Role,
+        CTC: req.body.CTC,
+        company_Role_Description: req.body.company_Role_Description,
+        RequiredCgpa: req.body.RequiredCgpa,
+        Required_high_school: req.body.Required_high_school,
+        Required_secondary_school: req.body.Required_secondary_school,
+        Required_backlog: req.body.Required_backlog,
+    });
+    await newcompany.save();
+    res.json({
+        message:"drive uploaded successfully"
+    });
     
+}
+// register the student for the drive
+exports.registerstudent= async(req,res) =>{
+  let studentid=req.body.studentid
+  let companyid=req.body.companyid
+  let required_backlog=req.body.Required_backlog
+  let backlog=req.body.student_backlog
+  let high_school=req.body.student_high_school
+  let Required_high_school=req.body.Required_high_school
+  let Secondary_School=req.body.student_secondary_school
+  let Required_secondary_school=req.body.Required_secondary_school
+  let cgpa=req.body.student_cgpa
+  let required_cgpa=req.body.RequiredCgpa
+  const studentapplied= await Company.countDocuments({_id:companyid,Student_Applied:{$in: [studentid]}})
+  if(studentapplied>0){
+      res.json({
+        message:"Student have Already applied for this  Job post",
+        result:-1
+      })
+  }
+  else if(backlog<=required_backlog && high_school>=Required_high_school && Secondary_School>=Required_secondary_school && cgpa>=required_cgpa)
+  {
+    Company.updateOne({_id:companyid},{$push: {Student_Applied: {$each: [studentid]}}}, function(err,result){
+        if(err)
+        console.log(err)
+        else{
+           User.updateOne({_id:studentid},{$push: {Company_Applied: {$each:[companyid]}}},function(err,result){
+            res.json({
+                message:"Student have successfully applied for drive",
+                result:0
+               })
+           });
+            
+        }
+      }) 
+   }
+   else{
+        res.json({
+                    message:"Student is not eligible for the job",
+                    result:1
+             })
+        }
+}
+// check if student have already register from drive or not
+exports.checkRegister=(req,res)=>{
+    let studentid=req.body.studentid
+    let companyid=req.body.companyid
+    Company.countDocuments({_id:companyid,Student_Applied:{$in: [studentid]}},function(err,result){
+        if(err){
+            console.log("error in finding");
+        }
+        else{
+            res.json({
+                message:"i am here finding task",
+                result:{result}
+               })
+        }
+    })
+}
+// return student applied to xyz company
+exports.check_which_student_Register=async(req,res)=>{
+    let companyid=req.body.companyid;
+    let ans=[];
+     var y=await Company.find({_id:companyid})
+     array=y[0].Student_Applied;
+     for (const element of array){
+         const a=await User.find({_id:element})
+         ans.push(a);
+     }     
+    res.json({
+        message:"This student have applied to this company",
+        result: ans
+       })     
 }

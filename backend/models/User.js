@@ -10,7 +10,11 @@ const userSchema = new Schema({
         minLength: 1,
         maxLength: 32
     },
+    Company_Applied:[{
+        type:Array,
+        default:""
 
+    }],
     lastName: {
         type: String,
         trim: true,
