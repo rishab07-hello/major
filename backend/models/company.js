@@ -13,7 +13,6 @@ const companySchema = new Schema({
         type: String,
         trim: true,
         minLength: 1,
-        maxLength: 32,
         required: true
     },
      CTC: {
@@ -60,6 +59,18 @@ const companySchema = new Schema({
         type: String,
         enum: ['custom', 'google']
     },
+    CreatedAt:{
+       type: Date,
+       default: Date.now
+    },
+    Student_Applied:[{
+        type:Array,
+        default:""
+    }],
+    Student_Applied_resume:[{
+        type:Array,
+        default:""
+    }]
 },{collection:'company'});
 
-module.exports = mongoose.models.company || mongoose.model("company", companySchema);
+module.exports = mongoose.models.Company || mongoose.model("Company", companySchema);

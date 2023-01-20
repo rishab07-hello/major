@@ -34,7 +34,7 @@ exports.signup = async (req, res) => {
     await user.save();
 
     const token = user.generateAuthToken();
-    res.cookie("token", token, {expires: new Date(Date.now() + 604800000), httpOnly: true});
+    res.cookie("token", token, {expires: new Date(Date.now() + 6048000), httpOnly: true});
     
     user = await User.findById(user._id);
 
@@ -144,6 +144,7 @@ exports.createdrivepost= async(req,res) =>{
 // register the student for the drive
 exports.registerstudent= async(req,res) =>{
   let studentid=req.body.studentid
+  let resumeofstudent=req.body.resume
   let companyid=req.body.companyid
   let required_backlog=req.body.Required_backlog
   let backlog=req.body.student_backlog
@@ -162,7 +163,7 @@ exports.registerstudent= async(req,res) =>{
   }
   else if(backlog<=required_backlog && high_school>=Required_high_school && Secondary_School>=Required_secondary_school && cgpa>=required_cgpa)
   {
-    Company.updateOne({_id:companyid},{$push: {Student_Applied: {$each: [studentid]}}}, function(err,result){
+    Company.updateOne({_id:companyid},{$push: {Student_Applied:studentid,Student_Applied_resume:resumeofstudent}},function(err,result){
         if(err)
         console.log(err)
         else{
@@ -213,4 +214,26 @@ exports.check_which_student_Register=async(req,res)=>{
         message:"This student have applied to this company",
         result: ans
        })     
+}
+// return all student details who have applied for drive along with resume
+exports.student_details_along_with_resume=async(req,res)=>{
+      let companyid=req.body.companyid;
+      let details=[]
+     const y=await Company.findOne({_id:companyid});
+     var student_applied=y.Student_Applied.toObject();
+     var student_resume=y.Student_Applied_resume.toObject();
+     var c=0;
+     for (const element of student_applied){
+          let student=await User.findOne({_id:element}).lean();
+          console.log("original"+student_resume[c])     
+        var t=student_resume[c]
+        student.resume=t;
+        console.log("now"+student.resume)
+        c=c+1;
+        details.push(student)
+     }
+     res.json({
+        message:"Details of student who have applied to this company",
+        result: details
+       })  
 }
