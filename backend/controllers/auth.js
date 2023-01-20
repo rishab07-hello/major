@@ -82,28 +82,23 @@ exports.changeResume = async(req,res) =>{
     })
 }
 // return all student details from the database
-exports.allStudentDetails= (req,res) =>{
-    User.find({}, function(err, result) {
-       if(err)
-       console.log("error in geting details of student in fetch");
-       else{
-       console.log("success in fecting data");
+exports.allStudentDetails= async(req,res) =>{
+    let result=await User.find({}).select("-password")   
        res.json({
         message: "we have find all student here",
         response: {result}
-    })
-    }
-   })
+       })
+
 }
 // return all company avaliable for drive
 exports.allCompanyDetails= (req,res) =>{
-    Company.find({}, function(err, result) {
+    let result=Company.find({active:"active"}, function(err, result) {
        if(err)
        console.log("error in geting details of company in fetch");
        else{
        console.log("success in fetching data of company");
        res.json({
-        message: "we have find all company here",
+        message: "we have find all active company here",
         response: {result}
     })
     }
@@ -117,7 +112,7 @@ exports.allNoticeDetails= (req,res) =>{
        else{
        console.log("success in fetching data of notice");
        res.json({
-        message: "we have find all company here",
+        message: "we have find all notice here",
         response: {result}
     })
     }
@@ -135,7 +130,7 @@ exports.createdrivepost= async(req,res) =>{
         Required_secondary_school: req.body.Required_secondary_school,
         Required_backlog: req.body.Required_backlog,
     });
-    await newcompany.save();
+    let y=await newcompany.save();
     res.json({
         message:"drive uploaded successfully"
     });
@@ -194,7 +189,7 @@ exports.checkRegister=(req,res)=>{
         }
         else{
             res.json({
-                message:"i am here finding task",
+                message:"Student is not register for drive",
                 result:{result}
                })
         }
@@ -224,11 +219,9 @@ exports.student_details_along_with_resume=async(req,res)=>{
      var student_resume=y.Student_Applied_resume.toObject();
      var c=0;
      for (const element of student_applied){
-          let student=await User.findOne({_id:element}).lean();
-          console.log("original"+student_resume[c])     
+        let student=await User.findOne({_id:element}).lean();    
         var t=student_resume[c]
         student.resume=t;
-        console.log("now"+student.resume)
         c=c+1;
         details.push(student)
      }
@@ -236,4 +229,15 @@ exports.student_details_along_with_resume=async(req,res)=>{
         message:"Details of student who have applied to this company",
         result: details
        })  
+}
+// delete the drive uploaded by the tpo make active 1
+exports.deletepost= async(req,res) =>{
+    let companyid=req.body.companyid;
+     await Company.updateOne({_id:companyid},{$set: {active:"passive"} },function(err, result){
+        if(err)
+        console.log("Eroor in delete post");
+     })
+     res.json({
+        message:"drive have become inactive"
+     })
 }

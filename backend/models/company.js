@@ -70,7 +70,11 @@ const companySchema = new Schema({
     Student_Applied_resume:[{
         type:Array,
         default:""
-    }]
+    }],
+    active:{
+        type:String,
+        default:"active"
+    }
 },{collection:'company'});
 
 module.exports = mongoose.models.Company || mongoose.model("Company", companySchema);
