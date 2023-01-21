@@ -179,21 +179,33 @@ exports.registerstudent= async(req,res) =>{
              })
         }
 }
-// check if student have already register from drive or not
-exports.checkRegister=(req,res)=>{
-    let studentid=req.body.studentid
-    let companyid=req.body.companyid
-    Company.countDocuments({_id:companyid,Student_Applied:{$in: [studentid]}},function(err,result){
-        if(err){
-            console.log("error in finding");
-        }
-        else{
-            res.json({
-                message:"Student is not register for drive",
-                result:{result}
-               })
-        }
+// check if student is eligible for drive
+exports.checkEligible=(req,res)=>{
+    let student=req.query.studentdetails
+    let company=req.query.companydetails
+  
+    let backlog=student.backlog
+    let high_school=student.High_School
+    let cgpa=student.cgpa
+    let Secondary_School=student.Secondary_School
+    let required_cgpa=company.RequiredCgpa
+    let required_backlog=company.Required_backlog
+    let Required_secondary_school=company.Required_secondary_school
+    let Required_high_school=company.Required_high_school
+
+  if(backlog<=required_backlog && high_school>=Required_high_school && Secondary_School>=Required_secondary_school && cgpa>=required_cgpa)
+  {
+    res.json({
+        message:"eligible",
+        result:1
     })
+}
+else{
+    res.json({
+        message:" not eligible",
+        result:0
+    })
+}
 }
 // return student applied to xyz company
 exports.check_which_student_Register=async(req,res)=>{
@@ -240,4 +252,20 @@ exports.deletepost= async(req,res) =>{
      res.json({
         message:"drive have become inactive"
      })
+}
+// return current company details
+
+exports.currentCompanyInfo=async(req,res)=>{
+    await Company.findOne({_id:req.query.id.currentIdofCompany},function(err,result){
+        if(err){
+            console.log("Error in finding current company")
+        }
+        res.json({
+            message:"i have current company details",
+            result:{result}
+        })
+    })
+      
+   
+    
 }

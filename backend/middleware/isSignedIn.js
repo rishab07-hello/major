@@ -12,9 +12,7 @@ module.exports = function(req, res, next){
     const token = authHeader.split(' ')[1];
 
     try{
-       
         const decodedToken = jwt.verify(token, "Secret");
-
         req.user = decodedToken;
         next();
     }catch{

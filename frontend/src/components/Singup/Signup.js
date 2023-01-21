@@ -7,7 +7,7 @@ import store from 'store';
 import '../Signin/signin.css';
 
 
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 
@@ -150,10 +150,6 @@ function Signup(props) {
                 <button class="submitBtn" type="submit">Create an account</button>
                 <div class="authMeta">Already have an account? <Link to="/login">Sign in</Link></div>
             </form>
-
-            <div className="social">
-              
-            </div>
             {redirect || props.currentUser ? <Navigate to='/studentlogin' /> : null}
         </div>
     )

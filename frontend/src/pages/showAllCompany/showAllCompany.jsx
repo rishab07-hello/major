@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect} from 'react';
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
+import Spinner from '../../components/Spinner/Spinner'
 
 const companyColumns = [
     { field: "_id", headerName: "ID", width: 70 },
@@ -38,18 +39,21 @@ const companyColumns = [
       width: 160,
       renderCell: (params) => {
         return (
-          <div className={`cellWithStatus ${params.row.status}`} style={{backgroundColor:"#b3e6b3"}}>
-            {"ACTIVE"}
+          <div className={`cellWithStatus ${params.row.active}`} >
+            {params.row.active}
           </div>
         );
       },
     },
   ];
+  var currentIdofCompany;
 const ShowAllCompany = () => {  
       const [companyData, setCompanyData] = useState([]);
+      const[loading,setloading]=useState(true);
     useEffect(() => {
         axios.get("http://localhost:9000/api/auth/getAllCompanyDetails").then(function(response){
             setCompanyData(response.data.response.result);
+            setloading(false)
         })
       }, []);
   const handleDelete = (_id) => {
@@ -57,6 +61,7 @@ const ShowAllCompany = () => {
   };
   
   const goto=(id)=>{
+    currentIdofCompany=id
   console.log("clicked");
   };
 
@@ -68,7 +73,7 @@ const ShowAllCompany = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/company/companyprofile" style={{ textDecoration: "none" }}>
               <div className="viewButton" onClick={()=>goto(params.row._id)}>View</div>
             </Link>
             <div
@@ -90,6 +95,7 @@ const ShowAllCompany = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Company Details
+        {loading&&<Spinner/>}
       </div>
       <DataGrid
         className="datagrid"
@@ -106,6 +112,7 @@ const ShowAllCompany = () => {
   );
 }
 export default ShowAllCompany;
+export {currentIdofCompany}
 // const ShowAllCompany = () => {
 //     const [signinData, setSigninData] = useState({});
 //     const handleSignupInput = (key, value) => {

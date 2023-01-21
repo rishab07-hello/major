@@ -7,11 +7,12 @@ import NoticePage from './components/notice/notice'
 import ShowAllCompany from './pages/showAllCompany/showAllCompany'
 import List from './pages/list/List';
 import New from  './pages/new/New';
+import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyProfile'
 import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
 import Signup from './components/Singup/Signup';
 import { useState, useEffect } from "react";
 
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 import { isEmpty } from "lodash";
 
@@ -31,7 +32,7 @@ function App() {
       const token = store.get("token");
       setCurrentUser(user);
       setToken(token);
-      toast.success(`Welcome ${user.firstName}`);
+      // toast.success(`Welcome ${user.firstName}`);
     } 
   }, []); 
 
@@ -170,6 +171,22 @@ function App() {
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               ></New>
+
+              </Authenticate>
+              
+            }
+          />
+          <Route
+            path="company/companyprofile"
+            exact
+            element={
+              <Authenticate>
+
+              <CurrentCompanyProfile
+                setToken={setToken}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              ></CurrentCompanyProfile>
 
               </Authenticate>
               

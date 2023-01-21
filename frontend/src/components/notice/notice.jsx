@@ -47,9 +47,9 @@ export class Notice extends Component {
                 <div className="row">
                     {this.state.articles.map((element) => {
                         return <div className="col-md-4" key={element._id}>
-                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name} date={element.createdAt} />
-                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name}  date={element.createdAt} />
-                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name}  date={element.createdAt} />
+                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name[0].toUpperCase()+element.Author_Name.slice(1)} date={element.createdAt} />
+                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name[0].toUpperCase()+element.Author_Name.slice(1)}  date={element.createdAt} />
+                            <NoticeItem title={element.Title.slice(0,50)} description={element.Description.slice(0,100)} NoticeUrl={element.url} author={element.Author_Name[0].toUpperCase()+element.Author_Name.slice(1)}  date={element.createdAt} />
                         </div>
                     })}
                 </div>

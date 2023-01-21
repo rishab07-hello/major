@@ -14,7 +14,6 @@ const Datatable = () => {
   
   const goto=(id)=>{
   idusedtoshow=id;
-  // console.log(idusedtoshow)
   };
 
   const actionColumn = [
@@ -40,12 +39,11 @@ const Datatable = () => {
     },
   ];
   return (
+    <> 
     <div className="datatable">
+     
       <div className="datatableTitle">
         Student Details
-        {/* <Link to="/users/new" className="link">
-          Add New
-        </Link> */}
       </div>
       <DataGrid
         className="datagrid"
@@ -57,6 +55,7 @@ const Datatable = () => {
         checkboxSelection
       />
     </div>
+    </>
   );
 };
 
