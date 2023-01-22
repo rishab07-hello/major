@@ -138,17 +138,23 @@ exports.createdrivepost= async(req,res) =>{
 }
 // register the student for the drive
 exports.registerstudent= async(req,res) =>{
-  let studentid=req.body.studentid
-  let resumeofstudent=req.body.resume
-  let companyid=req.body.companyid
-  let required_backlog=req.body.Required_backlog
-  let backlog=req.body.student_backlog
-  let high_school=req.body.student_high_school
-  let Required_high_school=req.body.Required_high_school
-  let Secondary_School=req.body.student_secondary_school
-  let Required_secondary_school=req.body.Required_secondary_school
-  let cgpa=req.body.student_cgpa
-  let required_cgpa=req.body.RequiredCgpa
+    let student=req.query.studentdetails
+    let company=req.query.companydetails
+  let studentid=student._id
+  let companyid=company._id
+  let backlog=student.backlog
+  let high_school=student.High_School
+  let cgpa=student.cgpa
+  let Secondary_School=student.Secondary_School
+  let required_cgpa=company.RequiredCgpa
+  let required_backlog=company.Required_backlog
+  let Required_secondary_school=company.Required_secondary_school
+  let Required_high_school=company.Required_high_school
+  let resumeofstudent=student.resume
+//   console.log(backlog+" "+required_backlog)
+//   console.log(high_school+" "+Required_high_school)
+//   console.log(Secondary_School+" "+Required_secondary_school)
+//   console.log(cgpa+" "+required_cgpa)
   const studentapplied= await Company.countDocuments({_id:companyid,Student_Applied:{$in: [studentid]}})
   if(studentapplied>0){
       res.json({

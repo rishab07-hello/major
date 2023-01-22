@@ -48,17 +48,44 @@ const CurrentCompanyProfile = (props) => {
       })
       .catch(function (error) {
         console.log(error);
-        toast.error("Error in updating resume",error);
+        toast.error("Error in checking eligiblity",error);
       });
     }
 
 
 
     const Apply=async()=>{
+        console.log("apply");
+        const detailsofboth={
+          method:'POST',
+          url:"http://localhost:9000/api/auth/registerstudent",
+          params:{"studentdetails":props.currentUser,"companydetails": currentCompanyData}
+        }
+      await axios.request(detailsofboth)
+      .then(function (response) {
+        if(response.data.result==0){
+        toast.success('Your have successfully applied for drive👋', {
+          position: toast.POSITION.TOP_CENTER
+        });
+        }
+        else if(response.data.result==-1){
+          toast.success('You have Already applied for this  Job post👋', {
+            position: toast.POSITION.TOP_CENTER
+          });
+          }
+        
+        else{
+         toast.error("You are not eligible for drive",{
+          position: toast.POSITION.TOP_CENTER
+         });
+        }
 
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error("Error in applying for drive",error);
+      });
     }
-
-    
     return(
     <div className="list">
       <Sidebar/>
