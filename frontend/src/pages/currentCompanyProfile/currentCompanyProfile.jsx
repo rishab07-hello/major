@@ -10,7 +10,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CurrentCompanyProfile = (props) => {  
-
   const [currentCompanyData, setCurrentCompanyData] = useState([]);
       const[loading,setloading]=useState(true);
       const option={
@@ -69,7 +68,7 @@ const CurrentCompanyProfile = (props) => {
         });
         }
         else if(response.data.result==-1){
-          toast.success('You have Already applied for this  Job post👋', {
+          toast.info('You have Already applied for this  Job post👋', {
             position: toast.POSITION.TOP_CENTER
           });
           }

@@ -30,8 +30,14 @@ const Sidebar = () => {
                 <h3> Companies</h3>
                 </li>
                 </Link>
+                <Link to="/studentAppliedDrive" style={{textDecoration: "none" , color: 'inherit'}}>
+                <li>
+                <WorkIcon className='icons'/>
+                <h3>Applied Drive</h3>
+                </li>
+                </Link>
 
-        <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
+             <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
             <li>
                 
             <HailIcon className='icons'/>
@@ -54,7 +60,7 @@ const Sidebar = () => {
             
             <Link to="/Noticepage" style={{textDecoration: "none" , color: 'inherit'}}>
             <li>
-                <SettingsIcon className='icons'/>
+                <CampaignIcon className='icons'/>
                 <h3>NOTICE</h3>
                 </li>
              </Link>

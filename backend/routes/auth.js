@@ -3,7 +3,7 @@ const express = require('express');
 let router = express.Router();
 
 const { signup, signin, signout, changeResume,allStudentDetails,allCompanyDetails,allNoticeDetails,createdrivepost,registerstudent,checkEligible
-,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo} = require('../controllers/auth');
+,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo,appliedDrive} = require('../controllers/auth');
 
 const { googleAuth } = require('../controllers/auth/social/google');
 // User
@@ -16,6 +16,7 @@ router.post('/social/google', googleAuth);
 router.post('/registerstudent', registerstudent);
 router.get('/checkEligible',checkEligible);
 router.get('/currentCompanyInfo',currentCompanyInfo);
+router.get('/appliedDrive',appliedDrive)
 // TPO
 router.get('/getAllCompanydetails', allCompanyDetails);
 router.post('/createdrivepost', createdrivepost);

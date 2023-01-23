@@ -3,8 +3,9 @@ import Home from './pages/homes/Home';
 import Front2page from './pages/front2page/Front2page';
 import Frontpage from './pages/Frontpage/Frontpage';
 import StudentProfile from './pages/StudentProfile/StudentProfile';
-import NoticePage from './components/notice/notice'
-import ShowAllCompany from './pages/showAllCompany/showAllCompany'
+import NoticePage from './components/notice/notice';
+import ShowAllCompany from './pages/showAllCompany/showAllCompany';
+import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
 import List from './pages/list/List';
 import New from  './pages/new/New';
 import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyProfile'
@@ -190,6 +191,19 @@ function App() {
 
               </Authenticate>
               
+            }
+          />
+          <Route
+            path="/studentAppliedDrive"
+            exact
+            element={
+              <Authenticate>
+              <StudentAppliedDrive
+                setToken={setToken}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              ></StudentAppliedDrive>
+              </Authenticate>          
             }
           />
 

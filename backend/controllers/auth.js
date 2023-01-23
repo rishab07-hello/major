@@ -270,8 +270,19 @@ exports.currentCompanyInfo=async(req,res)=>{
             message:"i have current company details",
             result:{result}
         })
+    }) 
+}
+exports.appliedDrive=async(req,res)=>{
+    let studentid=req.query.id
+    let result=await User.findOne({_id:studentid})
+    var applied=result.Company_Applied
+    var totalcompanyapplied=[]
+    for (const element of applied){
+        let company=await Company.findOne({_id:element}).lean()
+        totalcompanyapplied.push(company)
+    }
+    res.json({
+           message:" i have found all applied company",
+           result: totalcompanyapplied
     })
-      
-   
-    
 }

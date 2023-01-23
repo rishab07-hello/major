@@ -39,7 +39,7 @@ export class Notice extends Component {
             <Sidebar/>
             <div className="listContainer">
                 <Navbar/>
-            <div class="Notice">
+            <div className="Notice">
             <div className="container my-3">
             <h1 className="text-center">NOTICE</h1>
             {/* {this.state.loading} */}
