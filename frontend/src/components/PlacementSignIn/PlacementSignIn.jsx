@@ -7,9 +7,8 @@ import store from 'store';
 
 import toast from 'react-hot-toast';
 
-import './signin.css';
 
-function Signin(props) {
+function PlacementSignin(props) {
     const [signinData, setSigninData] = useState({});
     const [redirect, setRedirect] = useState(false);
 
@@ -19,7 +18,7 @@ function Signin(props) {
     
     const handleSigninSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:9000/api/auth/signin', signinData)
+        axios.post('http://localhost:9000/api/auth/placementsignin', signinData)
           .then(function (response) {
             console.log("i have sigined in here");
             store.set('user', response.data.response);
@@ -42,7 +41,7 @@ function Signin(props) {
     <form onSubmit={handleSigninSubmit}>
    
         <div className="headingsContainer">
-            <h3>Student Login</h3>
+            <h3>TPO LOGIN</h3>
             <br></br>
             <p>Sign in with your username and password</p>
         </div>
@@ -66,14 +65,14 @@ function Signin(props) {
                 <p className="forgotpsd"> <a href="/forgot">Forgot Password?</a></p>
             </div>
             <button type="submit">Login</button><br></br><br></br>
-            <p className="register">Not a member?  <Link to="/signup">Register here!</Link></p>
+            <p className="register">Not a member?  <Link to="/placementsignup">Register here!</Link></p>
         </div>
     </form>
     
-            {redirect || props.currentUser ? <Navigate to='/studentlogin' /> : null}
+            {redirect || props.currentUser ? <Navigate to='/TPOlogin' /> : null}
             </div>
             </div>
     )
 }
 
-export default Signin;
+export default PlacementSignin;

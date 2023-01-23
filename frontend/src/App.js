@@ -12,14 +12,14 @@ import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyP
 import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
 import Signup from './components/Singup/Signup';
 import { useState, useEffect } from "react";
-
 import { Toaster } from "react-hot-toast";
-
 import { isEmpty } from "lodash";
-
 import store from "store";
 import Signin from './components/Signin/Singin';
 import Signout from './components/Signout/Signout';
+import PlacementSignin from'./components/PlacementSignIn/PlacementSignIn'
+import PlacementSignup from'./components/PlacementSignUp/PlacementSignUp'
+import PlacementHome from './pages/homes/PlacementHome';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -56,12 +56,6 @@ function App() {
       </div>
       <BrowserRouter>
       <Routes>
-        {/* <Route path="/"/>
-        <Route index element={<Authenticate><Home/></Authenticate>}/>
-        <Route path="login" element={ <Login/> } />
-        <Route path="addUser" element={ <Authenticate><List/></Authenticate> } />
-        <Route path="users/new" element={ <Authenticate><New/></Authenticate> } />
-        <Route path="signup" element={ <Signup/> } /> */}
 
 <Route
             path="signout"
@@ -76,7 +70,7 @@ function App() {
           ></Route>
 
 <Route
-            path="login"
+            path="/login"
             exact
             element={
               <Signin
@@ -109,7 +103,7 @@ function App() {
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
             ></Home>
-</Authenticate>
+         </Authenticate>
             }
           />
           <Route
@@ -222,19 +216,43 @@ function App() {
               
             }
           ></Route>
-
-          {/* <Route
-            path="verify/email"
+          <Route
+            path="/placementlogin"
             exact
             element={
-              <Email
+                <PlacementSignin
                 setCurrentUser={setCurrentUser}
                 currentUser={currentUser}
                 token={token}
                 setToken={setToken}
-              ></Email>
+              ></PlacementSignin>
             }
-          ></Route> */}
+          ></Route>
+          <Route
+            path="/placementsignup"
+            exact
+            element={
+                <PlacementSignup
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></PlacementSignup>   
+            }
+          ></Route>
+
+       <Route
+            path="/TPOlogin"
+            exact
+            element={<Authenticate>              
+              <PlacementHome
+              setToken={setToken}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></PlacementHome>
+         </Authenticate>
+            }
+          />
 
 
       </Routes>

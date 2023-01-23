@@ -34,7 +34,7 @@ const Front2page= () => {
                             <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{textAlign:'center',fontSize: '20px'}}>Placement Cell ?</h1>
                             <p className="leading-relaxed mb-3" style={{textAlign:'center',fontSize: '20px'}}>The placement coordinators(TPO) Login from below link.</p>
                             <div className="flex items-center flex-wrap" style={{textAlign:'center',fontSize: '20px',padding: "0px 0px 0px 258px"}}>
-                                <Link to="login-company.php" className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">TPO Login
+                                <Link to="/placementlogin" className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">TPO Login
                                 </Link>
                                 <BiLogIn />
                             </div>
