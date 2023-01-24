@@ -69,7 +69,7 @@ function PlacementSignin(props) {
         </div>
     </form>
     
-            {redirect || props.currentUser ? <Navigate to='/TPOlogin' /> : null}
+            {redirect || props.currentUser ? <Navigate to='/TPOlogin'/> : null}
             </div>
             </div>
     )

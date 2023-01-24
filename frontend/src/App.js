@@ -4,11 +4,14 @@ import Front2page from './pages/front2page/Front2page';
 import Frontpage from './pages/Frontpage/Frontpage';
 import StudentProfile from './pages/StudentProfile/StudentProfile';
 import NoticePage from './components/notice/notice';
+import PlacementNoticePage from './components/notice/PlacementNotice'
 import ShowAllCompany from './pages/showAllCompany/showAllCompany';
+import PlacementShowAllCompany from './pages/showAllCompany/PlacementShowAllCompany';
 import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
 import List from './pages/list/List';
 import New from  './pages/new/New';
 import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyProfile'
+import PlacementCurrentCompanyProfile from './pages/currentCompanyProfile/PlacementCurrentCompanyProfile'
 import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
 import Signup from './components/Singup/Signup';
 import { useState, useEffect } from "react";
@@ -43,10 +46,14 @@ function App() {
     setCurrentUser(null);
     setToken(null);
     setSignoutRedirect(true);
-    
   };
   const Authenticate = ({children}) =>{
-    return currentUser ? children : <Navigate to="/login"/>
+    // console.log(currentUser);
+    return currentUser ? children : <Navigate to="/studentlogin"/>
+  }
+  const Authenticate1 = ({children}) =>{
+    // console.log(currentUser);
+    return currentUser ? children : <Navigate to="/TPOlogin"/>
   }
   // console.log(currentUser)
   return (
@@ -94,7 +101,23 @@ function App() {
             }
           ></Route>
 
+         
           <Route
+            path="/showAllCompany"
+            exact
+            element={
+              <Authenticate>
+                <ShowAllCompany>              
+              <Home
+              setToken={setToken}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></Home>
+            </ShowAllCompany>
+            </Authenticate>
+            }
+          />
+           <Route
             path="/studentlogin"
             exact
             element={<Authenticate>              
@@ -104,18 +127,6 @@ function App() {
               setCurrentUser={setCurrentUser}
             ></Home>
          </Authenticate>
-            }
-          />
-          <Route
-            path="/showAllCompany"
-            exact
-            element={<ShowAllCompany>              
-              <Home
-              setToken={setToken}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            ></Home>
-            </ShowAllCompany>
             }
           />
 
@@ -202,21 +213,39 @@ function App() {
           />
 
           <Route
+          // tpo routes
             path="addUser"
             exact
             element={
-              <Authenticate>
+              <Authenticate1>
                 <List
                 setCurrentUser={setCurrentUser}
                 currentUser={currentUser}
                 token={token}
                 setToken={setToken}
               ></List>
-              </Authenticate>
+              </Authenticate1>
               
             }
-          ></Route>
+          ></Route>   
           <Route
+            path="company/Placementcompanyprofile"
+            exact
+            element={
+              <Authenticate1>
+
+              <PlacementCurrentCompanyProfile
+                setToken={setToken}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              ></PlacementCurrentCompanyProfile>
+
+              </Authenticate1>
+              
+            }
+          /> 
+          <Route
+              
             path="/placementlogin"
             exact
             element={
@@ -244,17 +273,41 @@ function App() {
        <Route
             path="/TPOlogin"
             exact
-            element={<Authenticate>              
+            element={<Authenticate1>              
               <PlacementHome
               setToken={setToken}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
             ></PlacementHome>
-         </Authenticate>
+         </Authenticate1>
             }
           />
-
-
+          <Route
+            path="/PlacementNoticepage"
+            exact
+            element={<Authenticate1>              
+              <PlacementNoticePage
+              setToken={setToken}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></PlacementNoticePage>
+</Authenticate1>
+            }
+          />
+            <Route
+            path="/PlacementshowAllCompany"
+            exact
+            element={<Authenticate1>
+            <PlacementShowAllCompany>              
+              <Home
+              setToken={setToken}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></Home>
+            </PlacementShowAllCompany>
+            </Authenticate1>
+            }
+          />
       </Routes>
       </BrowserRouter>
       

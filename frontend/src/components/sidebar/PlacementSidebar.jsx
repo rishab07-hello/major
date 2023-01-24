@@ -24,7 +24,7 @@ const PlacementSidebar = () => {
                 <h3> Dashboard</h3>
                 </li>
                 </Link>
-                <Link to="/showAllCompany" style={{textDecoration: "none" , color: 'inherit'}}>
+                <Link to="/PlacementshowAllCompany" style={{textDecoration: "none" , color: 'inherit'}}>
                 <li>
                 <WorkIcon className='icons'/>
                 <h3> Companies</h3>
@@ -33,7 +33,7 @@ const PlacementSidebar = () => {
                 <Link to="/studentAppliedDrive" style={{textDecoration: "none" , color: 'inherit'}}>
                 <li>
                 <WorkIcon className='icons'/>
-                <h3>Applied Drive</h3>
+                <h3>Post Drive</h3>
                 </li>
                 </Link>
 
@@ -43,7 +43,7 @@ const PlacementSidebar = () => {
                 <h3> Students</h3>
                 </li>
                 </Link>            
-            <Link to="/Noticepage" style={{textDecoration: "none" , color: 'inherit'}}>
+            <Link to="/PlacementNoticepage" style={{textDecoration: "none" , color: 'inherit'}}>
             <li>
                 <CampaignIcon className='icons'/>
                 <h3>NOTICE</h3>

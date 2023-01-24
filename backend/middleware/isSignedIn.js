@@ -16,6 +16,7 @@ module.exports = function(req, res, next){
         req.user = decodedToken;
         next();
     }catch{
+        console.log("invalid ha tu")
         res.status(400).json(error(["invalid auth token"]));
     }
 }

@@ -37,13 +37,13 @@ const Sidebar = () => {
                 </li>
                 </Link>
 
-             <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
+             {/* <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
             <li>
                 
             <HailIcon className='icons'/>
                 <h3> Students</h3>
                 </li>
-                </Link>
+                </Link> */}
          <Link to="/studentprofile" style={{textDecoration: "none" , color: 'inherit'}}>   
             <li>
             <ContactsIcon className='icons'/>

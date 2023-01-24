@@ -6,7 +6,9 @@ import Featured from '../../components/featured/Featured';
 import Table from '../../components/table/Table'
 const PlacementHome = ()=>{
     return(
+        
         <div className="home">
+            {/* {console.log(props)} */}
             <PlacementSidebar/>
             <div className="homecontainer">
 
