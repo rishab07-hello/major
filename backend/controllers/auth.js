@@ -247,9 +247,18 @@ exports.student_details_along_with_resume=async(req,res)=>{
         result: details
        })  
 }
+// return details to xyz student
+exports.viewstudent=async(req,res)=>{
+let result=await User.findOne({_id:req.query.id})
+res.json({
+    message:" i am here",
+    result:result
+})
+}  
 // delete the drive uploaded by the tpo make active 1
 exports.deletepost= async(req,res) =>{
     let companyid=req.body.companyid;
+    
      await Company.updateOne({_id:companyid},{$set: {active:"passive"} },function(err, result){
         if(err)
         console.log("Eroor in delete post");
@@ -259,7 +268,6 @@ exports.deletepost= async(req,res) =>{
      })
 }
 // return current company details
-
 exports.currentCompanyInfo=async(req,res)=>{
     await Company.findOne({_id:req.query.id.currentIdofCompany},function(err,result){
         if(err){

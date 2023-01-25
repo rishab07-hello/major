@@ -23,6 +23,7 @@ import Signout from './components/Signout/Signout';
 import PlacementSignin from'./components/PlacementSignIn/PlacementSignIn'
 import PlacementSignup from'./components/PlacementSignUp/PlacementSignUp'
 import PlacementHome from './pages/homes/PlacementHome';
+import UserProfile from './pages/userProfile/UserProfile';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -239,6 +240,21 @@ function App() {
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               ></PlacementCurrentCompanyProfile>
+
+              </Authenticate1>
+              
+            }
+          /> 
+          <Route
+            path="/userprofile"
+            exact
+            element={
+              <Authenticate1>
+              <UserProfile
+                setToken={setToken}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              ></UserProfile>
 
               </Authenticate1>
               

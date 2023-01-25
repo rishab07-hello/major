@@ -3,7 +3,7 @@ const express = require('express');
 let router = express.Router();
 
 const { signup, signin, signout, changeResume,allStudentDetails,allCompanyDetails,allNoticeDetails,createdrivepost,registerstudent,checkEligible
-,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo,appliedDrive,placementSignIn,placementSignUp} = require('../controllers/auth');
+,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo,appliedDrive,placementSignIn,placementSignUp,viewstudent} = require('../controllers/auth');
 
 const { googleAuth } = require('../controllers/auth/social/google');
 // User
@@ -25,6 +25,7 @@ router.post('/createdrivepost', createdrivepost);
 router.get('/studentRegister',check_which_student_Register);
 router.get('/liststudentRegister',student_details_along_with_resume);
 router.get('/deletepost',deletepost);
+router.get('/viewstudent',viewstudent);
 
 // notice
 router.get('/getAllNoticedetails',allNoticeDetails);

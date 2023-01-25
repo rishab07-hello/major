@@ -24,7 +24,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to="/userprofile" style={{ textDecoration: "none" }}>
               <div className="viewButton" onClick={()=>goto(params.row._id)}>View</div>
             </Link>
             <div
