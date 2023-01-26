@@ -10,6 +10,7 @@ import PlacementShowAllCompany from './pages/showAllCompany/PlacementShowAllComp
 import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
 import List from './pages/list/List';
 import New from  './pages/new/New';
+import PostDrive from './pages/PostDrive/PostDrive'
 import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyProfile'
 import PlacementCurrentCompanyProfile from './pages/currentCompanyProfile/PlacementCurrentCompanyProfile'
 import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
@@ -230,6 +231,21 @@ function App() {
             }
           ></Route>   
           <Route
+            path="/PostDrive"
+            exact
+            element={
+              <Authenticate1>
+                <PostDrive
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></PostDrive>
+              </Authenticate1>
+              
+            }
+          ></Route> 
+          <Route
             path="company/Placementcompanyprofile"
             exact
             element={
@@ -260,8 +276,7 @@ function App() {
               
             }
           /> 
-          <Route
-              
+          <Route             
             path="/placementlogin"
             exact
             element={

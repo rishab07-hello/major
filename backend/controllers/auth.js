@@ -129,10 +129,15 @@ exports.createdrivepost= async(req,res) =>{
         Required_secondary_school: req.body.Required_secondary_school,
         Required_backlog: req.body.Required_backlog,
     });
-    let y=await newcompany.save();
-    res.json({
-        message:"drive uploaded successfully"
-    });
+     newcompany.save((err, result) => {
+        if (err) console.log(err);
+        else {
+            res.json({
+                message:"drive uploaded"
+            })
+        }})
+        
+    
     
 }
 // register the student for the drive

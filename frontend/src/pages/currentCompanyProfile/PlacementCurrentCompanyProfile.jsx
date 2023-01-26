@@ -60,7 +60,7 @@ const CurrentCompanyProfile = (props) => {
                     
                   </div>
                   <div className="pull-right">
-                    <Link to="/showAllCompany" className=" darkness btn btn-default btn-lg btn-flat"><i className="fa fa-arrow-circle-left"></i> Back</Link>
+                    <Link to="/PlacementShowAllCompany" className=" darkness btn btn-default btn-lg btn-flat"><i className="fa fa-arrow-circle-left"></i> Back</Link>
                   </div>
                   <div className="clearfix"></div>
                   <hr></hr>

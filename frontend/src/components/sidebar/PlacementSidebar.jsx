@@ -30,7 +30,7 @@ const PlacementSidebar = () => {
                 <h3> Companies</h3>
                 </li>
                 </Link>
-                <Link to="/studentAppliedDrive" style={{textDecoration: "none" , color: 'inherit'}}>
+                <Link to="/PostDrive" style={{textDecoration: "none" , color: 'inherit'}}>
                 <li>
                 <WorkIcon className='icons'/>
                 <h3>Post Drive</h3>
