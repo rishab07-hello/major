@@ -8,6 +8,7 @@ import PlacementNoticePage from './components/notice/PlacementNotice'
 import ShowAllCompany from './pages/showAllCompany/showAllCompany';
 import PlacementShowAllCompany from './pages/showAllCompany/PlacementShowAllCompany';
 import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
+import PlacementStudentApplied from './pages/PlacementStudentAppliedDrive/PlacementStudentApplied'
 import List from './pages/list/List';
 import New from  './pages/new/New';
 import PostDrive from './pages/PostDrive/PostDrive'
@@ -230,6 +231,22 @@ function App() {
               
             }
           ></Route>   
+          <Route
+          // tpo routes
+            path="/PlacementStudentApplied"
+            exact
+            element={
+              <Authenticate1>
+                <PlacementStudentApplied
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></PlacementStudentApplied>
+              </Authenticate1>
+              
+            }
+          ></Route>
           <Route
             path="/PostDrive"
             exact

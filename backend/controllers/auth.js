@@ -234,14 +234,14 @@ exports.check_which_student_Register=async(req,res)=>{
 }
 // return all student details who have applied for drive along with resume
 exports.student_details_along_with_resume=async(req,res)=>{
-      let companyid=req.body.companyid;
+      let companyid=req.query.id.currentIdofCompany;
       let details=[]
      const y=await Company.findOne({_id:companyid});
      var student_applied=y.Student_Applied.toObject();
      var student_resume=y.Student_Applied_resume.toObject();
      var c=0;
      for (const element of student_applied){
-        let student=await User.findOne({_id:element}).lean();    
+        let student=await User.findOne({_id:element}).select("-password").select("-_id").select("-isPhoneVerified").select("-isEmailVerified").select("-signUpMethod").select("-createdAt").select("-updatedAt").select("-__v").select("-Company_Applied").lean();    
         var t=student_resume[c]
         student.resume=t;
         c=c+1;
