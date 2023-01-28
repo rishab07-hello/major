@@ -24,7 +24,7 @@ router.get('/getAllCompanydetails', allCompanyDetails);
 router.post('/createdrivepost', createdrivepost);
 router.get('/studentRegister',check_which_student_Register);
 router.get('/liststudentRegister',student_details_along_with_resume);
-router.get('/deletepost',deletepost);
+router.post('/deletepost',deletepost);
 router.get('/viewstudent',viewstudent);
 
 // notice

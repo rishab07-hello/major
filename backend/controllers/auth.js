@@ -262,11 +262,11 @@ res.json({
 }  
 // delete the drive uploaded by the tpo make active 1
 exports.deletepost= async(req,res) =>{
-    let companyid=req.body.companyid;
-    
+    let companyid=req.query.id;
+    console.log(companyid)
      await Company.updateOne({_id:companyid},{$set: {active:"passive"} },function(err, result){
         if(err)
-        console.log("Eroor in delete post");
+        console.log("Eror in delete post");
      })
      res.json({
         message:"drive have become inactive"
@@ -290,7 +290,8 @@ exports.appliedDrive=async(req,res)=>{
     var applied=result.Company_Applied
     var totalcompanyapplied=[]
     for (const element of applied){
-        let company=await Company.findOne({_id:element}).lean()
+        let company=await Company.findOne({_id:element,active:"active"}).lean()
+        if(company!=null)
         totalcompanyapplied.push(company)
     }
     res.json({

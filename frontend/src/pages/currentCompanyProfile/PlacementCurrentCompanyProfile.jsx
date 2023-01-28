@@ -27,16 +27,22 @@ const CurrentCompanyProfile = (props) => {
 
 
       const deletedrive=()=>{
-        toast.success('deleted drive👋', {
+        const optiond1={
+          method:'POST',
+          url:"http://localhost:9000/api/auth/deletepost",
+          params:{id:currentIdofCompany}
+        }
+        axios.request(optiond1).then(function(response){
+          toast.success(' Deleted the drive Post👋', {
             position: toast.POSITION.TOP_CENTER
           });
           const timeout = setTimeout(() => {
             window.location.replace('http://localhost:3000/PlacementshowAllCompany');
           }, 1000);
           return ()=>clearTimeout()  
+          
+      })
       }
-
-      
     return(
     <div className="list">
       <PlacementSidebar/>
