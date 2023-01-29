@@ -57,6 +57,12 @@ const Sidebar = () => {
                 <h3> Resume Builder</h3>
                 </li>
             </a>
+            <a href="http://127.0.0.1:5000/" style={{textDecoration: "none" , color: 'inherit'}}>   
+            <li>
+            <CampaignIcon className='icons'/>
+                <h3> Resume Scorer</h3>
+                </li>
+            </a>
             
             <Link to="/Noticepage" style={{textDecoration: "none" , color: 'inherit'}}>
             <li>
