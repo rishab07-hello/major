@@ -34,12 +34,12 @@ const CurrentCompanyProfile = (props) => {
       await axios.request(detailsofboth)
       .then(function (response) {
         if(response.data.result==1){
-        toast.success('Your are Eligible for the drive👋', {
+        toast.success(' Your are Eligible for the drive👋', {
           position: toast.POSITION.TOP_CENTER
         });
         }
         else{
-         toast.error("You are not eligible for drive",{
+         toast.error(" You are not eligible for drive",{
           position: toast.POSITION.TOP_CENTER
          });
         }
@@ -63,18 +63,18 @@ const CurrentCompanyProfile = (props) => {
       await axios.request(detailsofboth)
       .then(function (response) {
         if(response.data.result==0){
-        toast.success('Your have successfully applied for drive👋', {
+        toast.success(' Your have successfully applied for drive👋', {
           position: toast.POSITION.TOP_CENTER
         });
         }
         else if(response.data.result==-1){
-          toast.info('You have Already applied for this  Job post👋', {
+          toast.info(' You have Already applied for this  Job post👋', {
             position: toast.POSITION.TOP_CENTER
           });
           }
         
         else{
-         toast.error("You are not eligible for drive",{
+         toast.error(" You are not eligible for drive",{
           position: toast.POSITION.TOP_CENTER
          });
         }

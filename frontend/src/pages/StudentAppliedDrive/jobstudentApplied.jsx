@@ -1,14 +1,15 @@
 import React from 'react';
 import { DataGrid } from "@mui/x-data-grid";
-import Sidebar from "../../components/sidebar/Sidebar"
+import PlacementSidebar from "../../components/sidebar/PlacementSidebar"
 import Navbar from "../../components/navbar/Navbar"
 import Spinner from '../../components/Spinner/Spinner';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import{idusedtoshow} from '../../components/datatable/Datatable'
 import { useState, useEffect } from "react";
 
 const AppliedCompanyColumns = [
-    { field: "_id", headerName: "ID", width: 70 },
+    { field: "_id", headerName: "ID", width: 220 },
     {
       field: "Company Name",
       headerName: "Company Name",
@@ -25,7 +26,7 @@ const AppliedCompanyColumns = [
     {
       field: "Role",
       headerName: "ROLE",
-      width: 230,
+      width: 200,
     },
   
     {
@@ -33,32 +34,18 @@ const AppliedCompanyColumns = [
       headerName: "CTC",
       width: 100,
     },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 160,
-      renderCell: (params) => {
-        params.row.active="pending"
-        return (
-        
-          <div className={`cellWithStatus ${params.row.active}`} >
-            Pending
-          </div>
-        );
-      },
-    },
   ];
 
 
 
 
-const StudentAppliedDrive = (props) => {  
+const JobStudentApplied = () => {  
     const [appliedCompanyData, setAppliedCompanyData] = useState([]);
     const[loading,setloading]=useState(true);
       const optiond={
         method:'GET',
-        url:"http://localhost:9000/api/auth/appliedDrive",
-        params:{id:props.currentUser._id}
+        url:"http://localhost:9000/api/auth/jobappliedDrive",
+        params:{id:idusedtoshow}
       }
     useEffect(() => {
         axios.request(optiond).then(function(response){
@@ -68,9 +55,6 @@ const StudentAppliedDrive = (props) => {
       }, []);
 
 
-      const handleDelete = (_id) => {
-        setAppliedCompanyData(appliedCompanyData.filter((item) => item._id !== _id));
-      };
       
       const goto=(id)=>{
         // currentIdofCompany=id
@@ -81,19 +65,17 @@ const StudentAppliedDrive = (props) => {
         {
           field: "action",
           headerName: "Action",
-          width: 200,
+          width: 180,
           renderCell: (params) => {
+            /// to do left
+            var c=1
             return (
-              <div className="cellAction">
-                <Link to="/company" style={{ textDecoration: "none" }}>
-                  <div className="viewButton" onClick={()=>goto(params.row._id)}>View</div>
-                </Link>
-                <div
-                  className="deleteButton"
-                  onClick={() => handleDelete(params.row._id)}
-                >
-                  Delete
-                </div>
+              <div className="Notice">
+                {c?
+                (<Link to="/jobStudentApplied" style={{ textDecoration: "none" }}>
+                  <button className="btn btn-success" onClick={()=>goto(params.row._id)}>Marked as Placed</button>
+                </Link>):(<button className="btn btn-success" disabled>Placed</button>)
+                 }
               </div>
             );
           },
@@ -102,7 +84,7 @@ const StudentAppliedDrive = (props) => {
 
 return(
     <div className="list">
-    <Sidebar/>
+    <PlacementSidebar/>
     <div className="listContainer">
       <Navbar/>
     <div className="datatable">
@@ -124,4 +106,4 @@ return(
     </div>
 
 )}
-export default StudentAppliedDrive
+export default JobStudentApplied

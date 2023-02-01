@@ -82,7 +82,7 @@ const PostDrive = () => {
                       </div>
                       <div className="col-md-6 latest-job ">
                         <div className="form-group">
-                          <label htmlFor="contactno">company_Role_Description</label>
+                          <label htmlFor="contactno">Company Role Description</label>
                           <br></br>
                           <textarea
                             type="text" className="form-control input-lg" name="company_Role_Description" style={{width: "561px", height:"116px"}} onChange={(e) => { handleSignupInput("company_Role_Description", e.target.value) }} required></textarea>
@@ -93,7 +93,9 @@ const PostDrive = () => {
                           <input
                             type="text" className="form-control input-lg" name="Required_backlog" onChange={(e) => { handleSignupInput("Required_backlog", e.target.value) }} required></input>
                         </div>
-                        <button className="submitBtn" type="submit"  onClick={()=>create()}>UPLOAD DRIVE</button>
+                        <div class="Notice" style={{textAlign:"center"}}>
+                        <button className="btn btn-success" type="submit" onClick={()=>create()}>UPLOAD DRIVE</button>
+                        </div>
                         
                       </div>
                     </div>

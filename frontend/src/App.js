@@ -8,6 +8,7 @@ import PlacementNoticePage from './components/notice/PlacementNotice'
 import ShowAllCompany from './pages/showAllCompany/showAllCompany';
 import PlacementShowAllCompany from './pages/showAllCompany/PlacementShowAllCompany';
 import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
+import JobStudentApplied from './pages/StudentAppliedDrive/jobstudentApplied';
 import PlacementStudentApplied from './pages/PlacementStudentAppliedDrive/PlacementStudentApplied'
 import List from './pages/list/List';
 import New from  './pages/new/New';
@@ -231,6 +232,22 @@ function App() {
               
             }
           ></Route>   
+           <Route
+          // tpo routesaaaaaaaaaaaaaaaaaaaaaaaaaa
+            path="/jobStudentApplied"
+            exact
+            element={
+              <Authenticate1>
+                <JobStudentApplied
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></JobStudentApplied>
+              </Authenticate1>
+              
+            }
+          ></Route>  
           <Route
           // tpo routes
             path="/PlacementStudentApplied"

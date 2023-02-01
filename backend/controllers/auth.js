@@ -299,6 +299,21 @@ exports.appliedDrive=async(req,res)=>{
            result: totalcompanyapplied
     })
 }
+exports.jobappliedDrive=async(req,res)=>{
+    let studentid=req.query.id
+    let result=await User.findOne({_id:studentid})
+    var applied=result.Company_Applied
+    var totalcompanyapplied=[]
+    for (const element of applied){
+        let company=await Company.findOne({_id:element,active:"active"}).lean()
+        if(company!=null)
+        totalcompanyapplied.push(company)
+    }
+    res.json({
+           message:" i have found all applied company",
+           result: totalcompanyapplied
+    })
+}
 // tpo login
 exports.placementSignIn = async (req, res) => {  
     let user = await Placement.findOne({email : req.body.email});

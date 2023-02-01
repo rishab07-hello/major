@@ -3,14 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StudentAppliedDrive from '../../pages/StudentAppliedDrive/StudentAppliedDrive';
 
 var idusedtoshow=0;
 const Datatable = () => {
   const [data, setData] = useState(userRows);
   
-  const handleDelete = (_id) => {
-    setData(data.filter((item) => item._id !== _id));
-  };
   
   const goto=(id)=>{
   idusedtoshow=id;
@@ -20,19 +18,21 @@ const Datatable = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 250,
       renderCell: (params) => {
         return (
           <div className="cellAction">
             <Link to="/userprofile" style={{ textDecoration: "none" }}>
               <div className="viewButton" onClick={()=>goto(params.row._id)}>View</div>
             </Link>
+            <Link to="/jobStudentApplied" style={{ textDecoration: "none" }}>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => goto(params.row._id)}
             >
-              Delete
+              Applied Company
             </div>
+            </Link>
           </div>
         );
       },

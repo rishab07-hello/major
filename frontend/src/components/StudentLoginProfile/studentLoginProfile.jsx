@@ -110,7 +110,9 @@ const PersonalProfile = (props) => {
                           <input type="text" name="resume" className="form-control input-lg" value={resumeupdate} onChange={resumeonchange}/>
                 
                           </div> 
-                          <button className="btn btn-default" onClick={ChangeResumeUrl}>Change Resume url</button>
+                          <div className="Notice" style={{textAlign:'center',marginBottom:'50px'}}> 
+                          <button className="btn btn-success" onClick={ChangeResumeUrl}>Change Resume</button>
+                         </div>    
                       </div>
                     </div>
     </div>
