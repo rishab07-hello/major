@@ -15,6 +15,11 @@ const userSchema = new Schema({
         default:""
 
     }],
+    studentplaced:[{
+        type:Array,
+        default:""
+
+    }],
     lastName: {
         type: String,
         trim: true,
