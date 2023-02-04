@@ -353,3 +353,20 @@ exports.placementSignUp = async (req, res) => {
         response: _.omit(user.toObject(), ['password'])
     });
 }
+// update the student get placed in xyz company and remove company id from company applied database
+exports.StudentPlaced=async(req,res)=>{
+    let studentid=req.query.id;
+    let companyid=req.query.id1;
+   let result =await User.updateOne(
+    { _id: studentid},
+    { $push: { studentplaced:companyid} }
+ ) 
+ let re =await User.updateOne(
+    { _id: studentid},
+    { $pull: {Company_Applied:companyid} }
+ )
+ res.json({
+    message:" student have been placed to this company"
+ })
+
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { DataGrid } from "@mui/x-data-grid";
 import PlacementSidebar from "../../components/sidebar/PlacementSidebar"
 import Navbar from "../../components/navbar/Navbar"
@@ -7,7 +8,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import{idusedtoshow} from '../../components/datatable/Datatable'
 import { useState, useEffect } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 const AppliedCompanyColumns = [
     { field: "_id", headerName: "ID", width: 220 },
     {
@@ -40,6 +43,7 @@ const AppliedCompanyColumns = [
 
 
 const JobStudentApplied = () => {  
+  const navigate=useNavigate()
     const [appliedCompanyData, setAppliedCompanyData] = useState([]);
     const[loading,setloading]=useState(true);
       const optiond={
@@ -56,9 +60,26 @@ const JobStudentApplied = () => {
 
 
       
-      const goto=(id)=>{
-        // currentIdofCompany=id
-      console.log("clicked");
+      const goto=async(id)=>{
+        const option={
+          method:'POST',
+          url:"http://localhost:9000/api/auth/StudentPlaced",
+          params:{id:idusedtoshow,id1:id}
+        }
+        await axios.request(option).then(function(response){
+          toast.success('Student placed👋', {
+            position: toast.POSITION.TOP_CENTER
+          });
+        }).catch(function (error) {
+          toast.error("Error in Uploading drive");
+      });
+    
+      setTimeout(() => {
+        // 👇 Redirects to jobStudentApplied page, note the `replace: true`
+        navigate(-1)
+      }, 1000);
+
+
       };
     
       const actionColumn = [
@@ -67,15 +88,13 @@ const JobStudentApplied = () => {
           headerName: "Action",
           width: 180,
           renderCell: (params) => {
-            /// to do left
-            var c=1
+            
             return (
               <div className="Notice">
-                {c?
-                (<Link to="/jobStudentApplied" style={{ textDecoration: "none" }}>
+              
+                <Link to="/jobStudentApplied" style={{ textDecoration: "none" }}>
                   <button className="btn btn-success" onClick={()=>goto(params.row._id)}>Marked as Placed</button>
-                </Link>):(<button className="btn btn-success" disabled>Placed</button>)
-                 }
+                </Link>
               </div>
             );
           },
@@ -87,6 +106,7 @@ return(
     <PlacementSidebar/>
     <div className="listContainer">
       <Navbar/>
+      <ToastContainer/>
     <div className="datatable">
       <div className="datatableTitle" >
         Applied Company Details
