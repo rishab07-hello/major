@@ -82,8 +82,10 @@ const CurrentCompanyProfile = (props) => {
                     <div>
                       <a onClick={()=>deletedrive()}  className="lightness btn btn-primary pull-right btn-flat margin-top-50">Delete</a>
                     </div>
+                    
                     <div>
-                      <Link to="/PlacementStudentApplied"  className="lightness btn btn-success btn-flat margin-top-50">View Student Applied</Link>
+                      <Link to="/PlacementStudentApplied"  className="lightness btn btn-success btn-flat margin-top-50">View Applied</Link>
+                      <Link to="/PlacementUpdateStudentPlaced"  className="lightness btn btn-success btn-flat margin-top-50 "style={{marginLeft:"150px",backgroundColor:"slateblue"}}>Update Placed Student</Link>
                     </div>
                 </div>
 

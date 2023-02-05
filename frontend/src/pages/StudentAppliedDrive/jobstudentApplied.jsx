@@ -39,9 +39,6 @@ const AppliedCompanyColumns = [
     },
   ];
 
-
-
-
 const JobStudentApplied = () => {  
   const navigate=useNavigate()
     const [appliedCompanyData, setAppliedCompanyData] = useState([]);
