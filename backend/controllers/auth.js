@@ -368,5 +368,23 @@ exports.StudentPlaced=async(req,res)=>{
  res.json({
     message:" student have been placed to this company"
  })
-
+}
+// update result of student result by help of emails id
+exports.PostPlacedStudent=async(req,res)=>{
+   let companyid=req.query.id;
+   let emails=req.query.email;
+   for( let i=0;i<emails.length;i++)
+   {
+    let result =await User.updateOne(
+        { email:emails[i]},
+        { $push: {studentplaced:companyid} }
+     ) 
+     let re =await User.updateOne(
+        { email:emails[i]},
+        { $pull: {Company_Applied:companyid} }
+     )
+   }
+   res.json({
+        message:"I have done with Updating the result of the student"
+   })
 }

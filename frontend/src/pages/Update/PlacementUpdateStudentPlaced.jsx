@@ -8,11 +8,17 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 const PlacementUpdateStudentPlaced = (props) => {  
+  const navigate=useNavigate()
   const [currentCompanyData, setCurrentCompanyData] = useState([]);
-  
+  const [currentEmail, setCurrentEmail] = useState("");
+  const [currentAllEmail,setCurrentAllEmail]=useState([])
+  const changeemail=(event)=>{
+    setCurrentEmail(event.target.value);
+  }
       const[loading,setloading]=useState(true);
+      var emails=[]
       const option={
         method:'GET',
         url:"http://localhost:9000/api/auth/currentCompanyInfo",
@@ -25,28 +31,35 @@ const PlacementUpdateStudentPlaced = (props) => {
         })
       }, [currentIdofCompany]);
 
-
-  const [indexes, setIndexes] = React.useState([]);
-  const [counter, setCounter] = React.useState(0);
-  const { register, handleSubmit } = useForm();
-  const addEMAIL = () => {
-    setIndexes((prevIndexes) => [...prevIndexes, counter]);
-    setCounter((prevCounter) => prevCounter + 1);
-  };
-  const removeEmail = (index) => () => {
-    setIndexes((prevIndexes) => [
-      ...prevIndexes.filter((item) => item !== index)
-    ]);
-    setCounter((prevCounter) => prevCounter - 1);
-  };
-  const done=()=>{
-    var emails=[]
-    for(let i=0;i<counter;i++)
-    {
-    const myElement = document.getElementById(`friends[${i}].email`).value;
-    emails.push(myElement)
+  
+  const done=async()=>{
+    // console.log(emails)
+    const optiond={
+      method:'POST',
+      url:"http://localhost:9000/api/auth/PostPlacedStudent",
+      params:{id:currentIdofCompany,email:currentAllEmail}
     }
-    console.log(emails)
+    await axios.request(optiond).then(function(response){
+      toast.success('Uploaded Result👋', {
+        position: toast.POSITION.TOP_CENTER
+      });
+      setTimeout(() => {
+        // 👇 Redirects to jobStudentApplied page, note the `replace: true`
+        navigate(-1)
+      }, 1500);
+    }).catch(function (error) {
+      toast.error("Error in Uploading Result",{
+        position: toast.POSITION.TOP_CENTER
+      });
+  });
+  }
+  const addEMAIL=()=>{
+    setCurrentAllEmail([...currentAllEmail, currentEmail]);
+     toast.success('Email Added👋', {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 1000 
+    });
+    
   }
 
     return(
@@ -58,7 +71,7 @@ const PlacementUpdateStudentPlaced = (props) => {
         {loading&&<Spinner/>}
         
         <h2 style={{textAlign:'center'}}>Update Placed Student</h2>
-        
+        <ToastContainer/>
         <div className='hh'>
         
     <div className="row" style={{textAlign: "center",
@@ -74,8 +87,9 @@ const PlacementUpdateStudentPlaced = (props) => {
         </div>
                       <div className="col-md-6 latest-job ">
                         <div className="form-group" style={{textAlign:"center",marginTop:"20px"}}>
+                        
                           <label htmlFor="fname">Company Name</label>
-                          <input type="text" style={{textAlign:"center"}} className="form-control input-lg"  name="fname" placeholder="First Name" value={currentCompanyData.Company_Name} readonly/>
+                          <input type="text" style={{textAlign:"center"}} className="form-control input-lg"  name="fname" placeholder="First Name" value={currentCompanyData.Company_Name} readOnly/>
                         </div>
                         <div className="form-group">
                           <label htmlFor="lname">ROLE</label>
@@ -83,36 +97,20 @@ const PlacementUpdateStudentPlaced = (props) => {
                         </div>
                         <div className="form-group">
                           <label htmlFor="email">CTC</label>
-                          <input type="email" className="form-control input-lg"style={{textAlign:"center"}}   placeholder="Email" value={currentCompanyData.CTC} readonly/>
+                          <input type="email" className="form-control input-lg"style={{textAlign:"center"}}   placeholder="Email" value={currentCompanyData.CTC} readOnly/>
                         </div>
                         <div className="form-group" id="email">
                           <label htmlFor="email">Placed student Email</label>
+                          <input type="email" className="form-control input-lg"style={{textAlign:"center"}}   placeholder="Email"  id="email" onChange={changeemail} /> 
                          
-                          {indexes.map((index) => {
-        const fieldName = `friends[${index}]`;
-        return (
-          <fieldset name={fieldName} key={fieldName}>
-            <label>
-              EMAIL:
-              <input type="email" className="form-control input-lg"style={{textAlign:"center"}}   placeholder="Email" id={`${fieldName}.email`}/>
-            </label>
-            <div className="Notice">
-            <button type="button" className="btn btn-danger"onClick={removeEmail(index)}>
-              Remove
-            </button>
-            </div>
-          </fieldset>
-        );
-      })}
+                        
       <div class="Notice">
-      <button type="button" className="btn btn-success" onClick={addEMAIL}>
+      <button type="button" className="btn btn-success" onClick={()=>addEMAIL()}>
         Add EMAIL
       </button>
         </div>
+        </div>          
         </div>
-                        
-        </div>
-        
         </div>
         </div>
         </div>
