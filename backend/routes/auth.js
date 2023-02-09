@@ -4,7 +4,7 @@ let router = express.Router();
 
 const { signup, signin, signout, changeResume,allStudentDetails,allCompanyDetails,allNoticeDetails,createdrivepost,registerstudent,checkEligible
 ,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo,appliedDrive,placementSignIn,placementSignUp,
-viewstudent,jobappliedDrive,StudentPlaced,PostPlacedStudent} = require('../controllers/auth');
+viewstudent,jobappliedDrive,StudentPlaced,PostPlacedStudent,TotalStudentPlaced} = require('../controllers/auth');
 
 const { googleAuth } = require('../controllers/auth/social/google');
 // User
@@ -18,6 +18,7 @@ router.post('/registerstudent', registerstudent);
 router.get('/checkEligible',checkEligible);
 router.get('/currentCompanyInfo',currentCompanyInfo);
 router.get('/appliedDrive',appliedDrive)
+router.get('/TotalStudentPlaced',TotalStudentPlaced)
 // TPO
 router.post('/placementsignin', placementSignIn);
 router.post('/placementsignup', placementSignUp);
