@@ -8,11 +8,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const AppliedCompanyColumns = [
-    { field: "_id", headerName: "ID", width: 70 },
+    { field: "_id", headerName: "ID", width: 100 },
     {
       field: "Company Name",
       headerName: "Company Name",
-      width: 230,
+      width: 300,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -66,40 +66,6 @@ const StudentAppliedDrive = (props) => {
             setloading(false)
         })
       }, []);
-
-
-      const handleDelete = (_id) => {
-        setAppliedCompanyData(appliedCompanyData.filter((item) => item._id !== _id));
-      };
-      
-      const goto=(id)=>{
-        // currentIdofCompany=id
-      console.log("clicked");
-      };
-    
-      const actionColumn = [
-        {
-          field: "action",
-          headerName: "Action",
-          width: 200,
-          renderCell: (params) => {
-            return (
-              <div className="cellAction">
-                <Link to="/company" style={{ textDecoration: "none" }}>
-                  <div className="viewButton" onClick={()=>goto(params.row._id)}>View</div>
-                </Link>
-                <div
-                  className="deleteButton"
-                  onClick={() => handleDelete(params.row._id)}
-                >
-                  Delete
-                </div>
-              </div>
-            );
-          },
-        },
-      ];
-
 return(
     <div className="list">
     <Sidebar/>
@@ -113,7 +79,7 @@ return(
       <DataGrid
         className="datagrid"
         rows={appliedCompanyData}
-        columns={AppliedCompanyColumns.concat(actionColumn)}
+        columns={AppliedCompanyColumns}
         pageSize={9}
         getRowId={(row) =>row._id}
         rowsPerPageOptions={[9]}
