@@ -289,7 +289,7 @@ exports.appliedDrive = async (req, res) => {
     var applied = result.Company_Applied
     var totalcompanyapplied = []
     for (const element of applied) {
-        let company = await Company.findOne({ _id: element, active: "active" }).lean()
+        let company = await Company.findOne({ _id: element}).lean()
         if (company != null)
             totalcompanyapplied.push(company)
     }

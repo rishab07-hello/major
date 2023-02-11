@@ -2,8 +2,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import toast from 'react-hot-toast';
-import store from 'store';
 import {idusedtoshow} from '../datatable/Datatable'
 import Spinner from '../../components/Spinner/Spinner';
 const PlacementLoginprofile = () => {
@@ -33,23 +31,23 @@ const PlacementLoginprofile = () => {
                       <div className="col-md-6 latest-job ">
                         <div className="form-group">
                           <label htmlFor="fname">Name</label>
-                          <input type="text" className="form-control input-lg" id="fname" name="fname" placeholder="First Name" value={currentStudentData.firstName}readonly/>
+                          <input type="text" className="form-control input-lg" id="fname" name="fname" placeholder="First Name" value={currentStudentData.firstName} required=""/>
                         </div>
                         <div className="form-group">
                           <label htmlFor="lname">Last Name</label>
-                          <input type="text" className="form-control input-lg" id="lname" name="lname" placeholder="Last Name" value="negi" readonly/>
+                          <input type="text" className="form-control input-lg" id="lname" name="lname" placeholder="Last Name" value={currentStudentData.lastName} required=""/>
                         </div>
                         <div className="form-group">
                           <label htmlFor="email">Email address</label>
-                          <input type="email" className="form-control input-lg" id="email" placeholder="Email" value="xyz" readonly/>
+                          <input type="email" className="form-control input-lg" id="email" placeholder="Email" value={currentStudentData.email} readonly/>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="address">Address</label>
-                          <textarea id="address" name="address" className="form-control input-lg" rows="5" placeholder="Address" readonly>hello</textarea>
+                          <label htmlFor="fathername">Father Name</label>
+                          <input id="address" name="fathername" className="form-control input-lg" value={currentStudentData.FatherName} readonly></input>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="city">City</label>
-                          <input type="text" className="form-control input-lg" id="city" name="city" value="ktd" placeholder="city" readonly/>
+                          <label htmlFor="mother">Mother Name</label>
+                          <input type="text" className="form-control input-lg" id="mother" value={currentStudentData.MotherName} placeholder="city" readonly/>
                         </div>
                         <div className="form-group">
                           <label htmlFor="state">State</label>
@@ -57,11 +55,11 @@ const PlacementLoginprofile = () => {
                         </div>
                         <div className="form-group">
                           <label htmlFor="Marks">HSC Marks</label>
-                          <input type="text" className="form-control input-lg" id="Marks" name="hsc" placeholder="Percentage/CGPA" value="99" readonly/>
+                          <input type="text" className="form-control input-lg" id="Marks" name="hsc" placeholder="Percentage/CGPA" value={currentStudentData.High_School} readonly/>
                         </div>
                         <div className="form-group">
                           <label htmlFor="Marks">SSC Marks</label>
-                          <input type="text" className="form-control input-lg" id="Marks" name="ssc" placeholder="Percentage/CGPA" value="100" readonly/>
+                          <input type="text" className="form-control input-lg" id="Marks" name="ssc" placeholder="Percentage/CGPA" value={currentStudentData.Secondary_School} readonly/>
                         </div>
                       </div>
                       <div className="col-md-6 latest-job ">
@@ -78,25 +76,24 @@ const PlacementLoginprofile = () => {
                           <input type="text" className="form-control input-lg" id="stream" name="stream" placeholder="stream" value="cse" readonly/>
                         </div>
                         <div className="form-group">
-                          <label>Skills</label>
-                          <textarea className="form-control input-lg" rows="4" name="skills" readonly>awesome</textarea>
+                          <label>Backlog</label>
+                          <input className="form-control input-lg" rows="4" name="skills" value={currentStudentData.backlog} readonly></input>
+                        </div>
+                        
+                        <div className="form-group">
+                          <label htmlFor="Marks">Cgpa</label>
+                          <input type="text" className="form-control input-lg" id="Marks" name="ug" placeholder="Percentage/CGPA" value={currentStudentData.cgpa} readonly/>
                         </div>
                         <div className="form-group">
-                          <label>About Me</label>
-                          <textarea className="form-control input-lg" rows="4" name="aboutme" readonly>hello</textarea>
+                          <label htmlFor="Marks">University_Roll_No</label>
+                          <input type="text" className="form-control input-lg" id="Marks" name="pg" placeholder="Percentage/CGPA" value={currentStudentData.Univ_Roll_no} readonly/>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="Marks">UG Marks</label>
-                          <input type="text" className="form-control input-lg" id="Marks" name="ug" placeholder="Percentage/CGPA" value="most" readonly/>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="Marks">PG Marks</label>
-                          <input type="text" className="form-control input-lg" id="Marks" name="pg" placeholder="Percentage/CGPA" value="100" readonly/>
-                        </div>
-                        <div className="form-group">
-                          <label>Resume</label>
-                          <input type="text" name="resume" className="form-control input-lg" value="sa" readonly/>
+                          <label>Current Resume</label>
+                          <input type="text" name="resume" className="form-control input-lg" value={currentStudentData.resume}/>
+                
                           </div> 
+          
                       </div>
                     </div>
     </div>

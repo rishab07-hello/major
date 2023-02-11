@@ -3,7 +3,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import Spinner from '../../components/Spinner/Spinner';
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
