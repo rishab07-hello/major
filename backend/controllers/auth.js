@@ -294,7 +294,7 @@ exports.appliedDrive = async (req, res) => {
             totalcompanyapplied.push(company)
     }
     res.json({
-        message: " i have found all applied company",
+        message: "i have found all applied company",
         result: totalcompanyapplied
     })
 }
@@ -401,4 +401,23 @@ exports.TotalStudentPlaced=async(req,res)=>{
         message: "student placed company details",
         result: totalplaced
     })
+}
+exports.PostNotice=async(req,res)=>{
+    let details=req.query.details;
+    let Tpo=req.query.Tpo;
+    let details1 = new Notice({
+        Title: details.Title,
+        Description: details.Description,
+        url: details.url,
+        Author_Name:Tpo.name
+    });
+details1.save((err, result) => {
+        if (err) console.log(err);
+        else {
+            res.json({
+                message: "Notice uploaded"
+            })
+        }
+    })
+    
 }

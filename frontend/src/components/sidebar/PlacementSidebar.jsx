@@ -36,6 +36,13 @@ const PlacementSidebar = () => {
                 <h3>Post Drive</h3>
                 </li>
                 </Link>
+                
+                <Link to="/PostNotice" style={{textDecoration: "none" , color: 'inherit'}}>
+                <li>
+                <WorkIcon className='icons'/>
+                <h3>Post Notice</h3>
+                </li>
+                </Link>
 
              <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
             <li>       

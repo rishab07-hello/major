@@ -14,6 +14,7 @@ import PlacementStudentApplied from './pages/PlacementStudentAppliedDrive/Placem
 import List from './pages/list/List';
 import New from  './pages/new/New';
 import PostDrive from './pages/PostDrive/PostDrive'
+import PostNotice from './pages/PostNotice/PostNotice'
 import CurrentCompanyProfile from './pages/currentCompanyProfile/currentCompanyProfile'
 import PlacementCurrentCompanyProfile from './pages/currentCompanyProfile/PlacementCurrentCompanyProfile'
 import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
@@ -245,6 +246,22 @@ function App() {
                 token={token}
                 setToken={setToken}
               ></JobStudentApplied>
+              </Authenticate1>
+              
+            }
+          ></Route>  
+          <Route
+          
+            path="/PostNotice"
+            exact
+            element={
+              <Authenticate1>
+                <PostNotice
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></PostNotice>
               </Authenticate1>
               
             }

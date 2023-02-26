@@ -15,7 +15,7 @@ const PostDrive = () => {
         let details = signinData;
         await axios.post('http://localhost:9000/api/auth/createdrivepost', details)
             .then(function (response) {
-              setTimeout(() => console.log('wait 3 seconds'), 10000);
+              // setTimeout(() => console.log('wait 3 seconds'), 10000);
                 toast.success('drive posted👋', {
                   position: toast.POSITION.TOP_CENTER
                 });
