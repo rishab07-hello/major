@@ -38,6 +38,11 @@ const CurrentCompanyProfile = (props) => {
           position: toast.POSITION.TOP_CENTER
         });
         }
+        else if(response.data.result==-10){
+          toast.info('Package is below cap👋', {
+            position: toast.POSITION.TOP_CENTER
+          });
+          }
         else{
          toast.error(" You are not eligible for drive",{
           position: toast.POSITION.TOP_CENTER
@@ -72,6 +77,11 @@ const CurrentCompanyProfile = (props) => {
             position: toast.POSITION.TOP_CENTER
           });
           }
+          else if(response.data.result==-10){
+            toast.info('Package is below cap👋', {
+              position: toast.POSITION.TOP_CENTER
+            });
+            }
         
         else{
          toast.error(" You are not eligible for drive",{

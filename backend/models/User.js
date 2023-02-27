@@ -96,6 +96,10 @@ const userSchema = new Schema({
         required: true,
         
     },
+    package:{
+        type: Number,
+        default: 0
+    },
     isPhoneVerified: {
         type: Boolean,
         trim: true,

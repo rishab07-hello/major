@@ -156,12 +156,18 @@ exports.registerstudent = async (req, res) => {
     let Required_secondary_school = company.Required_secondary_school
     let Required_high_school = company.Required_high_school
     let resumeofstudent = student.resume
-    //   console.log(backlog+" "+required_backlog)
-    //   console.log(high_school+" "+Required_high_school)
-    //   console.log(Secondary_School+" "+Required_secondary_school)
-    //   console.log(cgpa+" "+required_cgpa)
+    let amount=student.package;
+    let ctc=company.CTC;
+    let y=400000;
+    let total=Number(amount)+Number(y);
     const studentapplied = await Company.countDocuments({ _id: companyid, Student_Applied: { $in: [studentid] } })
-    if (studentapplied > 0) {
+    if(Number(amount)!=0&&Number(total)>Number(ctc)){ 
+        res.json({
+            message: "package of this company is below cap",
+            result: -10
+        })
+}
+    else if (studentapplied > 0) {
         res.json({
             message: "Student have Already applied for this  Job post",
             result: -1
@@ -202,8 +208,19 @@ exports.checkEligible = (req, res) => {
     let required_backlog = company.Required_backlog
     let Required_secondary_school = company.Required_secondary_school
     let Required_high_school = company.Required_high_school
+    let amount=student.package;
+    let ctc=company.CTC;
+    let y=400000;
+    let total=Number(amount)+Number(y);
+    if(Number(amount)!=0&&Number(total)>Number(ctc)){
+        
+            res.json({
+                message: "package of this company is below cap",
+                result: -10
+            })
+    }
 
-    if (backlog <= required_backlog && high_school >= Required_high_school && Secondary_School >= Required_secondary_school && cgpa >= required_cgpa) {
+    else if (backlog <= required_backlog && high_school >= Required_high_school && Secondary_School >= Required_secondary_school && cgpa >= required_cgpa) {
         res.json({
             message: "eligible",
             result: 1
@@ -356,10 +373,26 @@ exports.placementSignUp = async (req, res) => {
 exports.StudentPlaced = async (req, res) => {
     let studentid = req.query.id;
     let companyid = req.query.id1;
+    let deatils=await User.findOne({_id:studentid})
+    let deatils1=await Company.findOne({_id:companyid})
+    let amount=deatils.package;
+    let amount1=deatils1.CTC;
+    // console.log(amount);
+    // console.log(amount1);
+    let final;
+    if(amount >amount1){
+        final=amount;
+    }
+    else{
+        final=amount1;
+    }
+    console.log(final);
+    let abc=await User.updateOne({_id:studentid},{$set :{package:final}})
     let result = await User.updateOne(
         { _id: studentid },
         { $push: { studentplaced: companyid } }
     )
+
     let re = await User.updateOne(
         { _id: studentid },
         { $pull: { Company_Applied: companyid } }
@@ -372,7 +405,20 @@ exports.StudentPlaced = async (req, res) => {
 exports.PostPlacedStudent = async (req, res) => {
     let companyid = req.query.id;
     let emails = req.query.email;
+
     for (let i = 0; i < emails.length; i++) {
+        let deatils=await User.findOne({email:emails})
+        let deatils1=await Company.findOne({_id:companyid})
+        let amount=deatils.package;
+        let amount1=deatils1.CTC;
+        let final;
+        if(amount >amount1){
+            final=amount;
+        }
+        else{
+            final=amount1;
+        }
+        let abc=await User.updateOne({email:emails},{$set:{package:final}})
         let result = await User.updateOne(
             { email: emails[i] },
             { $push: { studentplaced: companyid } }
