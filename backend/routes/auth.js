@@ -4,7 +4,7 @@ let router = express.Router();
 
 const { signup, signin, signout, changeResume,allStudentDetails,allCompanyDetails,allNoticeDetails,createdrivepost,registerstudent,checkEligible
 ,check_which_student_Register,student_details_along_with_resume,deletepost,currentCompanyInfo,appliedDrive,placementSignIn,placementSignUp,
-viewstudent,jobappliedDrive,StudentPlaced,PostPlacedStudent,TotalStudentPlaced,PostNotice} = require('../controllers/auth');
+viewstudent,jobappliedDrive,StudentPlaced,PostPlacedStudent,TotalStudentPlaced,PostNotice,getAllPlacedCompanyDetails,liststudentPlaced} = require('../controllers/auth');
 
 const { googleAuth } = require('../controllers/auth/social/google');
 // User
@@ -26,12 +26,14 @@ router.get('/getAllCompanydetails', allCompanyDetails);
 router.post('/createdrivepost', createdrivepost);
 router.get('/studentRegister',check_which_student_Register);
 router.get('/liststudentRegister',student_details_along_with_resume);
+router.get('/liststudentPlaced',liststudentPlaced);
 router.post('/deletepost',deletepost);
 router.get('/viewstudent',viewstudent);
 router.get('/jobappliedDrive',jobappliedDrive)
 router.post('/StudentPlaced',StudentPlaced)
 router.post('/PostPlacedStudent',PostPlacedStudent)
 router.post('/createNoticepost',PostNotice)
+router.get('/getAllPlacedCompanyDetails',getAllPlacedCompanyDetails)
 
 
 // notice

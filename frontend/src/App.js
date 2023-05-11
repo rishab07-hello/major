@@ -4,13 +4,15 @@ import Front2page from './pages/front2page/Front2page';
 import Frontpage from './pages/Frontpage/Frontpage';
 import StudentProfile from './pages/StudentProfile/StudentProfile';
 import NoticePage from './components/notice/notice';
+import Details from "./components/student_placed_details/studen_placed";
 import PlacementNoticePage from './components/notice/PlacementNotice'
 import ShowAllCompany from './pages/showAllCompany/showAllCompany';
 import PlacementShowAllCompany from './pages/showAllCompany/PlacementShowAllCompany';
 import StudentAppliedDrive from './pages/StudentAppliedDrive/StudentAppliedDrive';
 import PlacementUpdateStudentPlaced from'./pages/Update/PlacementUpdateStudentPlaced';
 import JobStudentApplied from './pages/StudentAppliedDrive/jobstudentApplied';
-import PlacementStudentApplied from './pages/PlacementStudentAppliedDrive/PlacementStudentApplied'
+import PlacementStudentApplied from './pages/PlacementStudentAppliedDrive/PlacementStudentApplied';
+import PlacementStudentPlaced from './pages/PlacementStudentPlaced/PlacementStudentPlaced';
 import List from './pages/list/List';
 import New from  './pages/new/New';
 import PostDrive from './pages/PostDrive/PostDrive'
@@ -235,6 +237,22 @@ function App() {
             }
           ></Route>   
            <Route
+          // tpo routes
+            path="/details"
+            exact
+            element={
+              <Authenticate1>
+                <Details
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></Details>
+              </Authenticate1>
+              
+            }
+          ></Route> 
+           <Route
           // tpo routesaaaaaaaaaaaaaaaaaaaaaaaaaa
             path="/jobStudentApplied"
             exact
@@ -279,6 +297,22 @@ function App() {
                 token={token}
                 setToken={setToken}
               ></PlacementUpdateStudentPlaced>
+              </Authenticate1>
+              
+            }
+          ></Route> 
+          <Route
+          // tpo routesaaaaaaaaaaaaaaaaaaaaaaaaaa
+            path="/PlacementStudentPlaced"
+            exact
+            element={
+              <Authenticate1>
+                <PlacementStudentPlaced
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+                token={token}
+                setToken={setToken}
+              ></PlacementStudentPlaced>
               </Authenticate1>
               
             }

@@ -71,6 +71,10 @@ const companySchema = new Schema({
         type:Array,
         default:""
     }],
+    Student_Placed:[{
+        type:Array,
+        default:""
+    }],
     active:{
         type:String,
         default:"active"

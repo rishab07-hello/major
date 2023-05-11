@@ -137,8 +137,25 @@ exports.createdrivepost = async (req, res) => {
             })
         }
     })
-
-
+}
+exports.liststudentPlaced=async(req,res)=>{
+    let companyid = req.query.id.currentIdofCompany;
+    let details = []
+    const y = await Company.findOne({ _id: companyid });
+    var student_applied = y.Student_Placed.toObject();
+    // var student_resume = y.Student_Applied_resume.toObject();
+    var c = 0;
+    for (const element of student_applied) {
+        let student = await User.findOne({ _id: element }).select("-password").select("-_id").select("-isPhoneVerified").select("-isEmailVerified").select("-signUpMethod").select("-createdAt").select("-updatedAt").select("-__v").select("-Company_Applied").lean();
+        // var t = student_resume[c]
+        // student.resume = t;
+        c = c + 1;
+        details.push(student)
+    }
+    res.json({
+        message: "Details of student who have applied to this company",
+        result: details
+    })
 
 }
 // register the student for the drive
@@ -393,7 +410,11 @@ exports.StudentPlaced = async (req, res) => {
         { $push: { studentplaced: companyid } }
     )
 
-    let re = await User.updateOne(
+    let re = await Company.updateOne(
+        { _id: companyid },
+        { $push: { Student_Placed: studentid } }
+    )
+    let res1 = await User.updateOne(
         { _id: studentid },
         { $pull: { Company_Applied: companyid } }
     )
@@ -427,9 +448,27 @@ exports.PostPlacedStudent = async (req, res) => {
             { email: emails[i] },
             { $pull: { Company_Applied: companyid } }
         )
+        let res1 = await Company.updateOne(
+            { _id: companyid },
+            { $push: { Student_Placed: deatils._id } }
+        )
     }
     res.json({
         message: "I have done with Updating the result of the student"
+    })
+}
+exports.getAllPlacedCompanyDetails=async(req,res)=>{
+    console.log("i am here");
+    let result = await Company.find({'Student_Placed.0': {$exists: true}}, function (err, result) {
+        if (err)
+            console.log("error in geting details of company in fetch");
+        else {
+            console.log("success in fetching data of company");
+            res.json({
+                message: "we have find all active company here",
+                response: { result }
+            })
+        }
     })
 }
 // student whose id is xyz placed company

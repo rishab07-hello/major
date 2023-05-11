@@ -36,6 +36,12 @@ const PlacementSidebar = () => {
                 <h3>Post Drive</h3>
                 </li>
                 </Link>
+                <Link to="/details" style={{textDecoration: "none" , color: 'inherit'}}>
+                <li>
+                <WorkIcon className='icons'/>
+                <h3>Student placed</h3>
+                </li>
+                </Link>
                 
                 <Link to="/PostNotice" style={{textDecoration: "none" , color: 'inherit'}}>
                 <li>
@@ -47,7 +53,7 @@ const PlacementSidebar = () => {
              <Link to="/addUser" style={{textDecoration: "none" , color: 'inherit'}}>   
             <li>       
             <HailIcon className='icons'/>
-                <h3> Students</h3>
+                <h3> Students details</h3>
                 </li>
                 </Link>            
             <Link to="/PlacementNoticepage" style={{textDecoration: "none" , color: 'inherit'}}>
