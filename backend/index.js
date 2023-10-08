@@ -23,7 +23,7 @@ app.use('/api/auth', auth);
 app.use('/api/verify', verify);
 
 // server running
-const port = process.env.Port ||9000;
+const port = process.env.Port || 9000;
 app.listen(port, () => {
     console.log(`API service running on PORT : ${port}`);
 });
