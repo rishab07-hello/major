@@ -5,6 +5,7 @@ const client = require('twilio')(accountSid, authToken);
 // i am here
 const error = require('../utils/error');
 
+// i am also here2
 exports.sendOtpOnPhone = async (req, res) => {
     const user = await User.findById(req.user._id);
     if(!user) return res.status(404).send("user not available");
