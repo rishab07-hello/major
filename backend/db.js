@@ -1,6 +1,6 @@
 // database configs
 const mongoose = require('mongoose');
-const uri = "mmongodb+srv://RishabNegi:Rish%40bnegi@cluster0.rehtaic.mongodb.net/test?retryWrites=true&w=majority";
+const uri = process.env.database;
 
 module.exports = () => {
     mongoose.connect(uri, {
