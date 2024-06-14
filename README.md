@@ -2,10 +2,10 @@
 # major project
 The Front Page of the college is shown in Figure 7.1. Here we can login into the Student and TPO (placement officer) dashboard.
 ![6c48a388395cb32d776a402767bb91966d2c0aec](https://github.com/rishab07-hello/major/assets/54372491/dc317396-6f91-4506-9b65-b38b64eb591d)
+![3407383b1a5514e090d264c0440f15439b170d99](https://github.com/rishab07-hello/major/assets/54372491/1c7a0c83-4462-4cbc-9f99-d15178d537c2)
 ![dfe1b1871b890a6e982dd144e595196e28e2910f](https://github.com/rishab07-hello/major/assets/54372491/9c9ed907-1d8f-4cc6-b7ed-c40df40a58dd)
 ![a0871ac29c9ec1e84375f07eac0d91e82be348c2](https://github.com/rishab07-hello/major/assets/54372491/39705f07-7697-44c8-aa0c-140ea459d771)
 ![7374718cdd85ed2acd65e48e7187f869d952eae2](https://github.com/rishab07-hello/major/assets/54372491/6567df33-55bd-4f1a-8288-e85a54505aef)
-![3407383b1a5514e090d264c0440f15439b170d99](https://github.com/rishab07-hello/major/assets/54372491/1c7a0c83-4462-4cbc-9f99-d15178d537c2)
 ![3873d0d83e7e9bf74d52d9ab84bcffd102f4fcdf](https://github.com/rishab07-hello/major/assets/54372491/398430f2-f47a-486d-a3a8-3c8d38fddf14)
 ![1913e6be2d72193f7fdd9ddd93c572feaeeb3da9](https://github.com/rishab07-hello/major/assets/54372491/f1a9d200-1fc2-45e1-a81d-e153fea9f0e0)
 ![82e5ef67a80b0d02803d8577d6c8fa34f5592611](https://github.com/rishab07-hello/major/assets/54372491/eeeb86d5-e8ee-422b-8793-a2deec9fd617)
