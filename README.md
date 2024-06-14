@@ -8,9 +8,10 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
 ![a0871ac29c9ec1e84375f07eac0d91e82be348c2](https://github.com/rishab07-hello/major/assets/54372491/39705f07-7697-44c8-aa0c-140ea459d771)
 ![dfe1b1871b890a6e982dd144e595196e28e2910f](https://github.com/rishab07-hello/major/assets/54372491/9c9ed907-1d8f-4cc6-b7ed-c40df40a58dd)
 ![7374718cdd85ed2acd65e48e7187f869d952eae2](https://github.com/rishab07-hello/major/assets/54372491/6567df33-55bd-4f1a-8288-e85a54505aef)
+![7fc005da447109f7cc630bfc5c835e26948d5553](https://github.com/rishab07-hello/major/assets/54372491/1f0a11bf-a86c-4d5b-8ecd-5b6494d6c1f3)
 ![5a78475a685458d87213367b93fc7cd86d375de1](https://github.com/rishab07-hello/major/assets/54372491/934295af-a958-4bbb-b5cd-a4b16fc3ad68)
 
-![7fc005da447109f7cc630bfc5c835e26948d5553](https://github.com/rishab07-hello/major/assets/54372491/1f0a11bf-a86c-4d5b-8ecd-5b6494d6c1f3)
+
 
 
 ![3873d0d83e7e9bf74d52d9ab84bcffd102f4fcdf](https://github.com/rishab07-hello/major/assets/54372491/398430f2-f47a-486d-a3a8-3c8d38fddf14)
