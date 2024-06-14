@@ -10,6 +10,7 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
 ![7374718cdd85ed2acd65e48e7187f869d952eae2](https://github.com/rishab07-hello/major/assets/54372491/6567df33-55bd-4f1a-8288-e85a54505aef)
 ![7fc005da447109f7cc630bfc5c835e26948d5553](https://github.com/rishab07-hello/major/assets/54372491/1f0a11bf-a86c-4d5b-8ecd-5b6494d6c1f3)
 ![5a78475a685458d87213367b93fc7cd86d375de1](https://github.com/rishab07-hello/major/assets/54372491/934295af-a958-4bbb-b5cd-a4b16fc3ad68)
+![8e1a3b2078447a9084381c538420f32389b13962](https://github.com/rishab07-hello/major/assets/54372491/6b8f2bf1-1697-4c4f-9681-bd3c8e8e70fd)
 ![8c786a1f4cb86af012e4534b766ff71bc718d86f](https://github.com/rishab07-hello/major/assets/54372491/efcbdd0b-2800-411b-9e8b-f6defff91015)
 
 
@@ -19,7 +20,7 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
 ![1913e6be2d72193f7fdd9ddd93c572feaeeb3da9](https://github.com/rishab07-hello/major/assets/54372491/f1a9d200-1fc2-45e1-a81d-e153fea9f0e0)
 
 ![9cd0c07bf1988bf228f1272197fa8a09b8cfb3a7](https://github.com/rishab07-hello/major/assets/54372491/7d87bdff-4857-44da-b72d-ae4d1e379d4c)
-![8e1a3b2078447a9084381c538420f32389b13962](https://github.com/rishab07-hello/major/assets/54372491/6b8f2bf1-1697-4c4f-9681-bd3c8e8e70fd)
+
 
 
 
