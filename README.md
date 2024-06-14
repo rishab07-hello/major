@@ -1,6 +1,5 @@
 
 # Major Project Snapshot
-</br>
 ![6c48a388395cb32d776a402767bb91966d2c0aec](https://github.com/rishab07-hello/major/assets/54372491/dc317396-6f91-4506-9b65-b38b64eb591d)
 </br>                           
 ![3407383b1a5514e090d264c0440f15439b170d99](https://github.com/rishab07-hello/major/assets/54372491/1c7a0c83-4462-4cbc-9f99-d15178d537c2)
