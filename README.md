@@ -2,7 +2,11 @@
 # major project
 The Front Page of the college is shown in Figure 7.1. Here we can login into the Student and TPO (placement officer) dashboard.
 ![6c48a388395cb32d776a402767bb91966d2c0aec](https://github.com/rishab07-hello/major/assets/54372491/dc317396-6f91-4506-9b65-b38b64eb591d)
+                           Fig 7.1 Front Page for College Placement Portal
+Figure 7.2 shows the login page for the college placement site. Students can access the portal using their credentials.
 ![3407383b1a5514e090d264c0440f15439b170d99](https://github.com/rishab07-hello/major/assets/54372491/1c7a0c83-4462-4cbc-9f99-d15178d537c2)
+                           Fig 7.2 Student Login Page
+The Student Dashboard is shown in figure 7.3. This dashboard shows in which company students logged in have been placed.
 ![82e5ef67a80b0d02803d8577d6c8fa34f5592611](https://github.com/rishab07-hello/major/assets/54372491/eeeb86d5-e8ee-422b-8793-a2deec9fd617)
 ![f563605a5eef3b63e49dcec56ab4e48c53bb848e](https://github.com/rishab07-hello/major/assets/54372491/0092bfe3-fc96-4c63-9bb9-450de4c8b8f5)
 ![a0871ac29c9ec1e84375f07eac0d91e82be348c2](https://github.com/rishab07-hello/major/assets/54372491/39705f07-7697-44c8-aa0c-140ea459d771)
@@ -16,14 +20,8 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
 ![1913e6be2d72193f7fdd9ddd93c572feaeeb3da9](https://github.com/rishab07-hello/major/assets/54372491/f1a9d200-1fc2-45e1-a81d-e153fea9f0e0)
 ![e042e4cce30b368f3e35075c8dc9e2363425db07](https://github.com/rishab07-hello/major/assets/54372491/aef91b6f-ba69-46a8-aa42-e98c851f4674)
 
-![3873d0d83e7e9bf74d52d9ab84bcffd102f4fcdf](https://github.com/rishab07-hello/major/assets/54372491/398430f2-f47a-486d-a3a8-3c8d38fddf14)
-
-
 ![9cd0c07bf1988bf228f1272197fa8a09b8cfb3a7](https://github.com/rishab07-hello/major/assets/54372491/7d87bdff-4857-44da-b72d-ae4d1e379d4c)
-
-
-
-
+![3873d0d83e7e9bf74d52d9ab84bcffd102f4fcdf](https://github.com/rishab07-hello/major/assets/54372491/398430f2-f47a-486d-a3a8-3c8d38fddf14)
 ![4acec3c0f1f294bf08f4c35e081759530f62bb67](https://github.com/rishab07-hello/major/assets/54372491/a4c59488-0620-460a-9702-07fe0754e4c1)
 
 
