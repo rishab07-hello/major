@@ -12,7 +12,7 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
 ![5a78475a685458d87213367b93fc7cd86d375de1](https://github.com/rishab07-hello/major/assets/54372491/934295af-a958-4bbb-b5cd-a4b16fc3ad68)
 ![8e1a3b2078447a9084381c538420f32389b13962](https://github.com/rishab07-hello/major/assets/54372491/6b8f2bf1-1697-4c4f-9681-bd3c8e8e70fd)
 ![8c786a1f4cb86af012e4534b766ff71bc718d86f](https://github.com/rishab07-hello/major/assets/54372491/efcbdd0b-2800-411b-9e8b-f6defff91015)
-
+indas
 
 
 
