@@ -5,7 +5,7 @@ The Front Page of the college is shown in Figure 7.1. Here we can login into the
                            Fig 7.1 Front Page for College Placement Portal
 Figure 7.2 shows the login page for the college placement site. Students can access the portal using their credentials.
 ![3407383b1a5514e090d264c0440f15439b170d99](https://github.com/rishab07-hello/major/assets/54372491/1c7a0c83-4462-4cbc-9f99-d15178d537c2)
-                           Fig 7.2 Student Login Page
+                           Fig 7.2 Student Login Page</br>
 The Student Dashboard is shown in figure 7.3. This dashboard shows in which company students logged in have been placed.
 ![82e5ef67a80b0d02803d8577d6c8fa34f5592611](https://github.com/rishab07-hello/major/assets/54372491/eeeb86d5-e8ee-422b-8793-a2deec9fd617)
 ![f563605a5eef3b63e49dcec56ab4e48c53bb848e](https://github.com/rishab07-hello/major/assets/54372491/0092bfe3-fc96-4c63-9bb9-450de4c8b8f5)
